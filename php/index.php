@@ -28,24 +28,36 @@
             die('Erreur : '.$e->getMessage());
         }
 
-        $reponse = $bdd->query('SELECT titre, contenu, date_creation FROM billets ORDER BY id DESC LIMIT 0,5');
+        $reponse = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY id DESC LIMIT 0,5');
 
         while ($donnees = $reponse->fetch())
         {
+            
+        ?>
         
+        <div class="news">
         
-            echo '<h3>' . $donnees['titre'] . '   Le ' . $donnees['date_creation'] . '</h3>';
+            <h3>
+            <?php echo htmlspecialchars($donnees['titre']); ?>
+            <em>le <?php echo $donnees['date_creation_fr']; ?></em>
+            </h3>
+    
+        <p>
         
+        <?php
+    
+        echo nl2br(htmlspecialchars($donnees['contenu']));
+            
+        ?>
         
-            echo '<p>' . $donnees['contenu'] . '</p>';    
+        <br/>
+        <em><a href="commentaires.php?billet=<?php echo $donnees['id']; ?>">Commentaires</a></em>
+        </p>
         
-	        
-	        
-	    
-        }
-
+        </div>
+        <?php
+        } 
         $reponse->closeCursor();
-
         ?>
     
     </body>
