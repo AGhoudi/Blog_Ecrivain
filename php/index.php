@@ -6,7 +6,7 @@
     
         <meta charset="UTF-8">
         <title>Projet de Blog</title>
-        <link rel="stylesheet" href="blog.css">
+        <link rel="stylesheet" href="css/blog.css">
         
     </head>
     
