@@ -1,3 +1,20 @@
+<?php
+        
+        try
+        {
+	       $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
+        }
+        
+        catch(Exception $e)
+        {
+            die('Erreur : '.$e->getMessage());
+        }
+
+        $reponse = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY id DESC LIMIT 0,5');
+        
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -17,22 +34,8 @@
         <p>Derniers billets du blog:</p>
         
         <?php
-        
-        try
-        {
-	       $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-        }
-        
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
-
-        $reponse = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY id DESC LIMIT 0,5');
-
-        while ($donnees = $reponse->fetch())
-        {
-            
+            while ($donnees = $reponse->fetch())
+            {
         ?>
         
         <div class="news">
@@ -46,7 +49,7 @@
         
         <?php
     
-        echo nl2br(htmlspecialchars($donnees['contenu']));
+            echo nl2br(htmlspecialchars($donnees['contenu']));
             
         ?>
         
@@ -55,8 +58,9 @@
         </p>
         
         </div>
+        
         <?php
-        } 
+            } 
         $reponse->closeCursor();
         ?>
     
