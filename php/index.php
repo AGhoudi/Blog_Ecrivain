@@ -6,4 +6,3 @@
 
     require('indexView.php');
 
-?>
