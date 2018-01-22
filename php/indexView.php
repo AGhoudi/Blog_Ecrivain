@@ -36,7 +36,7 @@
         
         <br/>
         
-            <em><a href="#">Commentaires</a></em>
+            <em><a href="post.php?id=<?= $data['id'] ?>">Commentaires</a></em>
         
         </p>
         
