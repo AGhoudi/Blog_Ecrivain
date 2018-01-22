@@ -1,16 +1,31 @@
-<!DOCTYPE html>
+<?php
 
-<html lang="fr">
+    require('controller.php');
 
-    <head>
-    
-        <meta charset="UTF-8">
-        <title>Le blog de Jean Forteroche</title>
+    if (isset($_GET['action'])) {
         
-    </head>
-    
-    <body>
-    
-    </body>
-    
-</html>
+        if ($_GET['action'] == 'listPosts') {
+            
+            listPosts();
+            
+        }
+        
+        elseif ($_GET['action'] == 'post') {
+            
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                
+                post();
+            }
+            
+            else {
+                
+                echo 'Erreur : aucun identifiant de billet envoyé';
+            }
+        }
+    }
+
+    else {
+        
+        listPosts();
+    }
+
