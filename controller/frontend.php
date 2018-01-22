@@ -8,7 +8,7 @@
         
         $posts = getPosts();
 
-        require('view/listPostsView.php');
+        require('view/frontend/listPostsView.php');
         
     }
 
@@ -19,7 +19,7 @@
         $post = getPost($_GET['id']);
         $comments = getComments($_GET['id']);
 
-        require('view/postView.php');
+        require('view/frontend/postView.php');
         
     }
 
