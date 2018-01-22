@@ -25,7 +25,7 @@
         
             <h3>
             
-                <?= echo htmlspecialchars($data['title']) ?>
+                <?= htmlspecialchars($data['title']) ?>
                 <em>le <?= $data['creation_date_fr'] ?></em>
                 
             </h3>
