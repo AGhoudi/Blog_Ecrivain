@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-
-<html lang="fr">
-
-    <head>
-    
-        <meta charset="UTF-8">
-        <title>Projet de Blog</title>
-        <link rel="stylesheet" href="css/blog.css">
-        
-    </head>
-    
-    <body>
-    
+<?php $title = 'Projet de blog'; ?>
+       
+<?php ob_start(); ?>
+             
         <h1>Mon super blog !</h1>
         
         <p>Derniers billets du blog:</p>
@@ -47,6 +37,6 @@
         $posts->closeCursor();
         ?>
     
-    </body>
-    
-</html>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
