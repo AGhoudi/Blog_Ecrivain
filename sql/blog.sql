@@ -2,8 +2,8 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 17 jan. 2018 à 12:36
+-- 
+-- Généré le :  lun. 22 jan. 2018 à 11:18
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -25,48 +25,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `billets`
+-- Structure de la table `comments`
 --
 
-DROP TABLE IF EXISTS `billets`;
-CREATE TABLE IF NOT EXISTS `billets` (
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titre` varchar(255) NOT NULL,
-  `contenu` text NOT NULL,
-  `date_creation` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `billets`
---
-
-INSERT INTO `billets` (`id`, `titre`, `contenu`, `date_creation`) VALUES
-(1, 'Bienvenue sur mon super blog!!!', 'Bienvenue sur mon super blog!!!\r\nIl y aura ici les meilleures news du monde.', '2018-01-09 14:30:28'),
-(2, 'Jean Forteroche', 'Je me présente, je suis Jean Forteroche, acteur, chanteur, danseur, cinéaste, écrivain, et plongeur professionnel; je suis le meilleur, même si j\'ai pas écrit la moindre ligne de mon premier roman.', '2018-01-09 15:04:00'),
-(4, 'Première ligne de mon roman', 'J\'étais assis... ah... non en fait j\'ai rien dis, arghhh... le début ne va pas, bon ben tant pis, je commencerais mon roman une autre fois alors.', '2018-01-09 15:08:00');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `commentaires`
---
-
-DROP TABLE IF EXISTS `commentaires`;
-CREATE TABLE IF NOT EXISTS `commentaires` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_billet` int(11) NOT NULL,
-  `auteur` varchar(255) NOT NULL,
-  `commentaire` text NOT NULL,
-  `date_commentaire` datetime NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `comment` text NOT NULL,
+  `comment_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `commentaires`
+-- Déchargement des données de la table `comments`
 --
 
-INSERT INTO `commentaires` (`id`, `id_billet`, `auteur`, `commentaire`, `date_commentaire`) VALUES
+INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`) VALUES
 (1, 1, 'Max', 'Joli blog!!!\r\nbel effort.', '2018-01-17 12:17:23'),
 (3, 1, 'bill', 'Non il est nul ton blog', '2018-01-17 12:18:35'),
 (4, 1, 'Tom', 'Oui c\'est vrai le design est pas terrible', '2018-01-17 12:19:21'),
@@ -76,6 +52,30 @@ INSERT INTO `commentaires` (`id`, `id_billet`, `auteur`, `commentaire`, `date_co
 (8, 4, 'thomas', 'Lol, même pas capable d\'écrire une ligne, mdr', '2018-01-17 12:22:25'),
 (9, 4, 'Martin', 'Au fait? il parle de quoi ton roman?', '2018-01-17 12:22:55'),
 (10, 4, 'Charlotte', 'Les romans et les blogs c\'est pour les vieux.', '2018-01-17 12:23:28');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `creation_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
+(1, 'Bienvenue sur mon super blog!!!', 'Bienvenue sur mon super blog!!!\r\nIl y aura ici les meilleures news du monde.', '2018-01-09 14:30:28'),
+(2, 'Jean Forteroche', 'Je me présente, je suis Jean Forteroche, acteur, chanteur, danseur, cinéaste, écrivain, et plongeur professionnel; je suis le meilleur, même si j\'ai pas écrit la moindre ligne de mon premier roman.', '2018-01-09 15:04:00'),
+(4, 'Première ligne de mon roman', 'J\'étais assis... ah... non en fait j\'ai rien dis, arghhh... le début ne va pas, bon ben tant pis, je commencerais mon roman une autre fois alors.', '2018-01-09 15:08:00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
