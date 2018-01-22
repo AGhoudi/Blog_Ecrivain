@@ -1,6 +1,6 @@
 <?php
 
-    require('model.php');
+    require('model/frontend.php');
 
     function listPosts()
         
@@ -8,7 +8,7 @@
         
         $posts = getPosts();
 
-        require('listPostsView.php');
+        require('view/listPostsView.php');
         
     }
 
@@ -19,6 +19,6 @@
         $post = getPost($_GET['id']);
         $comments = getComments($_GET['id']);
 
-        require('postView.php');
+        require('view/postView.php');
         
     }
