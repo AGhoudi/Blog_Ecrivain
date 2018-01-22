@@ -6,7 +6,7 @@
        
         <meta charset="utf-8" />
         <title><?= $title ?></title>
-        <link href="css/blog.css" rel="stylesheet" />
+        <link href="public/css/style.css" rel="stylesheet" />
          
     </head>
         
