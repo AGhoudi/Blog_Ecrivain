@@ -2,6 +2,8 @@
 
     require('controller/frontend.php');
 
+    try {
+
     if (isset($_GET['action'])) {
         
         if ($_GET['action'] == 'listPosts') {
@@ -19,7 +21,7 @@
             
             else {
                 
-                echo 'Erreur : aucun identifiant de billet envoyé';
+                throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
         
@@ -35,14 +37,14 @@
                 
                 else {
                     
-                    echo 'Erreur : tous les champs ne sont pas remplis !';
+                    throw new Exception('Tous les champs ne sont pas remplis !');
                 }
                 
             }
             
             else {
                 
-                echo 'Erreur : aucun identifiant de billet envoyé';
+                throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
     }
@@ -50,5 +52,13 @@
     else {
         
         listPosts();
+    }
+        
+    }
+
+    catch(Exception $e) { 
+        
+        echo 'Erreur : ' . $e->getMessage();
+        
     }
 
