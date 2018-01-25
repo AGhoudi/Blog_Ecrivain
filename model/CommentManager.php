@@ -1,6 +1,8 @@
 <?php
 
-    class CommentManager
+    require_once("model/Manager.php");
+
+    class CommentManager extends Manager
         
     {
         
@@ -25,16 +27,6 @@
             $affectedLines = $comments->execute(array($postId, $author, $comment));
 
             return $affectedLines;
-            
-        }
-
-        private function dbConnect()
-            
-        {
-            
-            $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-            
-            return $db;
             
         }
         
