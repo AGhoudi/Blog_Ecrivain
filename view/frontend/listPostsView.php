@@ -92,25 +92,25 @@
         
             <div class="carousel-item active">
             
-                <img class="d-block w-100 rounded" src="../../../test-blog/public/image/image1.jpg" alt="First slide">
+                <img class="d-block w-100 rounded" src="../../../projet4/public/image/image1.jpg" alt="First slide">
                 
             </div>
             
             <div class="carousel-item">
             
-                <img class="d-block w-100 rounded" src="../../../test-blog/public/image/image2.jpg" alt="Second slide">
+                <img class="d-block w-100 rounded" src="../../../projet4/public/image/image2.jpg" alt="Second slide">
                 
             </div>
             
             <div class="carousel-item">
             
-                <img class="d-block w-100 rounded" src="../../../test-blog/public/image/image3.jpg" alt="Third slide">
+                <img class="d-block w-100 rounded" src="../../../projet4/public/image/image3.jpg" alt="Third slide">
                 
             </div>
             
             <div class="carousel-item">
             
-                <img class="d-block w-100 rounded" src="../../../test-blog/public/image/image4.jpg" alt="Four slide">
+                <img class="d-block w-100 rounded" src="../../../projet4/public/image/image4.jpg" alt="Four slide">
                 
             </div>
     
@@ -142,7 +142,7 @@
     
         <div class="row">
         
-            <div class="col-sm-4">
+            <div class="col-sm-4 my-5">
             
                 <h3 class="my-5">Liste de mes précédents romans</h3>
                 
@@ -164,7 +164,7 @@
                 
             </div>
             
-            <div class="col-sm-8">
+            <div class="col-sm-8 my-5">
             
                 <h3 class="my-5 pl-5 text-center">Qui suis-je?</h3>
                 
@@ -184,25 +184,25 @@
             
     </div>
     
-    <!-- Liste des chapitres et blog -->
-    
-    <h3 class="my-5 pl-5 text-center" id="blog">Billet simple pour l'Alaska</h3>
-    
-    <?php
-
-        while ($data = $posts->fetch())
-        
-        {
-        
-    ?>
+    <!-- Liste des chapitres et blog -->    
    
-    <div class="container">
+    <div class="container" id="blog">
     
         <div class="row">
         
-            <div class="col-sm-12">    
+            <div class="col-sm-12 my-5">
+            
+            <h3 class="my-5 pl-5 text-center" >Billet simple pour l'Alaska</h3>
+            
+                <?php
+
+                    while ($data = $posts->fetch())
+        
+                    {
+        
+                ?>                   
       
-                <div class="bg-success rounded mb-5">         
+                <div class=" container bg-success rounded mb-5">                                    
                 
                     <h3 class="text-center text-white chapitre py-2">
            
@@ -222,7 +222,7 @@
                         
                     </p>
         
-                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-warning mx-auto d-flex justify-content-center mb-3 font-weight-bold font-italic" style="width: 200px;">Ajouter un commentaire</a>
+                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-light mx-auto d-flex justify-content-center mb-3 font-weight-bold font-italic" style="width: 200px;">Ajouter un commentaire</a>
                                 
                 </div>
         
@@ -239,6 +239,26 @@
         $posts->closeCursor();
 
     ?>
+            
+    <!-- Accès à l'espace d'administration -->
+    
+    <div class="container" id="administration">
+    
+        <div class="row">
+                   
+            <div class="col-sm-12 my-5" style="height: 700px;">
+            
+                <h3 class="my-5 text-center">Administration du blog</h3>
+                                       
+                    <a href="index.php?action=adminConnect" class="btn btn-light  mx-auto d-flex justify-content-center mb-3 font-weight-bold font-italic mb-5 " style="width: 300px;">Espace membre</a>                 
+                                        
+                    <a href="index.php?action=admin" class="btn btn-success  mx-auto d-flex justify-content-center mb-3 font-weight-bold font-italic mb-5 " style="width: 300px;">Connexion à l'espace d'administration</a>                
+                
+            </div>
+           
+        </div>
+        
+    </div>        
     
     <?php $content = ob_get_clean(); ?>
 

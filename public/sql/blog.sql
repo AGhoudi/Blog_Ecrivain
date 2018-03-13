@@ -2,8 +2,8 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- 
--- Généré le :  lun. 22 jan. 2018 à 15:52
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 13 mars 2018 à 16:03
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -35,23 +35,42 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `author` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `comment_date` datetime NOT NULL,
+  `report_comment` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `comments`
 --
 
-INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`) VALUES
-(1, 1, 'Max', 'Joli blog!!!\r\nbel effort.', '2018-01-17 12:17:23'),
-(3, 1, 'bill', 'Non il est nul ton blog', '2018-01-17 12:18:35'),
-(4, 1, 'Tom', 'Oui c\'est vrai le design est pas terrible', '2018-01-17 12:19:21'),
-(5, 2, 'jimmy', 'Merci de te présenter', '2018-01-17 12:20:21'),
-(6, 2, 'francis', 'Oui au mon on sait a qui on a affaire.', '2018-01-17 12:20:51'),
-(7, 2, 'Emilie', 'Moi en tout cas, j\'aime pas les blogs,\r\nc\'est trop has been, limite année 90.', '2018-01-17 12:21:41'),
-(8, 4, 'thomas', 'Lol, même pas capable d\'écrire une ligne, mdr', '2018-01-17 12:22:25'),
-(9, 4, 'Martin', 'Au fait? il parle de quoi ton roman?', '2018-01-17 12:22:55'),
-(10, 4, 'Charlotte', 'Les romans et les blogs c\'est pour les vieux.', '2018-01-17 12:23:28');
+INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`, `report_comment`) VALUES
+(1, 1, 'Max', 'Ton site c\'est trop de la bombe!!!', '2018-03-13 16:15:05', 0),
+(5, 2, 'jimmy', 'Merci de te présenter', '2018-01-17 12:20:21', 0),
+(6, 2, 'francis', 'Oui au mon on sait a qui on a affaire.', '2018-01-17 12:20:51', 0),
+(7, 2, 'Emilie', 'Moi en tout cas, j\'aime pas les blogs,\r\nc\'est trop has been, limite année 90.', '2018-01-17 12:21:41', 0),
+(8, 4, 'thomas', 'Lol, même pas capable d\'écrire une ligne, mdr', '2018-01-17 12:22:25', 0),
+(9, 4, 'Martin', 'Au fait? il parle de quoi ton roman?', '2018-01-17 12:22:55', 0),
+(10, 4, 'Bill', 'Très joli blog', '2018-03-13 14:08:27', 0),
+(11, 7, 'billy', 'ok', '2018-02-09 18:17:20', 0),
+(12, 7, 'bill', 'ok', '2018-02-10 11:44:57', 0),
+(14, 5, 'bill', 'cosby', '2018-02-11 17:32:02', 0),
+(18, 2, 'tim', 'tim', '2018-02-18 15:48:36', 0),
+(23, 6, 'test', 'test', '2018-03-07 15:12:55', 0),
+(24, 6, 'hello', 'hello', '2018-03-07 18:41:41', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `members`
+--
+
+DROP TABLE IF EXISTS `members`;
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -66,16 +85,19 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `content` text NOT NULL,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
-(1, 'Bienvenue sur mon super blog!!!', 'Bienvenue sur mon super blog!!!\r\nIl y aura ici les meilleures news du monde.', '2018-01-09 14:30:28'),
-(2, 'Jean Forteroche', 'Je me présente, je suis Jean Forteroche, acteur, chanteur, danseur, cinéaste, écrivain, et plongeur professionnel; je suis le meilleur, même si j\'ai pas écrit la moindre ligne de mon premier roman.', '2018-01-09 15:04:00'),
-(4, 'Première ligne de mon roman', 'J\'étais assis... ah... non en fait j\'ai rien dis, arghhh... le début ne va pas, bon ben tant pis, je commencerais mon roman une autre fois alors.', '2018-01-09 15:08:00');
+(1, 'Chapitre 1', 'Je me présente, je suis Jean Forteroche, acteur, chanteur, danseur, cinéaste, écrivain, et plongeur professionnel; je suis le meilleur, même si j\'ai pas écrit la moindre ligne de mon premier roman.', '2018-01-09 15:04:00'),
+(3, 'Chapitre 3', 'J\'étais assis... ah... non en fait j\'ai rien dis, arghhh... le début ne va pas, bon ben tant pis, je commencerais mon roman une autre fois alors.', '2018-01-09 15:08:00'),
+(4, 'Chapitre 4', 'Je teste le blog une fois', '2018-02-07 19:30:03'),
+(5, 'Chapitre 5', 'Toto était un enfant très malin, qui adorait faire des blagues à ses amis', '2018-02-07 19:31:57'),
+(6, 'Chapitre 1', 'un test', '2018-03-06 19:58:11'),
+(24, 'Chapitre 6', 'chapitre 6', '2018-03-07 10:58:11');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
