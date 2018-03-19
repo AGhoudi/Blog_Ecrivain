@@ -24,6 +24,10 @@
         {
             
             $db = $this->dbConnect();
+            $connect = $db->prepare('SELECT username, password FROM members');
+            $connect->execute(array('username', 'password'));
+            
+            return $connect; 
         
         }
         

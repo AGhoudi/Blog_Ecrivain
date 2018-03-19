@@ -36,7 +36,6 @@ function addPost($title, $content)
 {
     
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-
     $addedPost = $postManager->newPost($title, $content);
 
     if ($addedPost === false) {
@@ -161,19 +160,39 @@ function reportComment($commentId)
 function adminPannel()
     
 {
+    
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
     $listAll = $adminManager->adminSpace();
+    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
+    $connection = $adminManager->adminConnection();
 
     require('view/frontend/adminView.php');
+    
 }
 
 function adminConnect()
     
 {
+    
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
-    $connection = $adminManager->adminSpace();
+    $listAll = $adminManager->adminSpace();
 
     require('view/frontend/adminConnectView.php');
+    
+}
+
+function adminLogout()
+    
+{
+    
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+    setcookie('username', '');
+    setcookie('password', '');
+    
+    header ('location: index.php?action=adminConnect');
+    
 }
 
 function commentPannel()
@@ -205,8 +224,7 @@ function updateComment($commentId, $author, $comment)
     
 {
     
-   $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
-
+    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
     $modifiedComment = $adminManager->changedComment($commentId, $author, $comment);
 
     if ($modifiedComment === false) {
@@ -222,7 +240,7 @@ function updateComment($commentId, $author, $comment)
   
         $comment = $comments->fetch();
         
-        header('Location: index.php?action=changeComment&id=' . $comment['post_id']);        
+        header('Location: index.php?action=changeComment&id=' . $comment['id']);        
         
     }
     
@@ -233,7 +251,9 @@ function delComment($commentId)
 {
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
     $comments = $adminManager->searchComments($commentId);
+    
     $comment = $comments->fetch();
+    
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();    
     $suppressComment = $adminManager->deleteComment($commentId);
 
@@ -255,9 +275,7 @@ function unreportComment($commentId)
     
 {
 
-    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
-    
-    
+    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();    
     $safeComment = $adminManager->uncheckComment($commentId);
 
     if ($safeComment === false) {
@@ -267,6 +285,7 @@ function unreportComment($commentId)
     }
     
     else {
+        
         $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
         $comments = $adminManager->searchComments($commentId);    
   

@@ -25,7 +25,7 @@
         elseif ($_GET['action'] == 'addPost') {
             
             if (!empty($_POST['title']) && !empty($_POST['content'])) {                    
-                addPost($_POST['title'], $_POST['content']);                    
+                addPost(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']));                    
             }
             
             else {                    
@@ -51,7 +51,7 @@
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 
                 if (!empty($_POST['title']) && !empty($_POST['content'])) {                    
-                    updatePost($_GET['id'], $_POST['title'], $_POST['content']);                    
+                    updatePost($_GET['id'], htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']));                    
                 }
                 
                 else {                    
@@ -83,7 +83,7 @@
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {                    
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);                    
+                    addComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));                    
                 }
                 
                 else {                    
@@ -122,6 +122,12 @@
             
         }
         
+        elseif ($_GET['action'] == 'adminLogout') {
+            
+            adminLogout();
+            
+        }
+        
         elseif ($_GET['action'] == 'commentPannel') {
             
             if (isset($_GET['id']) && $_GET['id'] > 0) {                
@@ -151,7 +157,7 @@
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {                    
-                    updateComment($_GET['id'], $_POST['author'], $_POST['comment']);                    
+                    updateComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));                    
                 }
                 
                 else {                    
