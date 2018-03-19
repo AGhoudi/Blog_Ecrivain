@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 13 mars 2018 à 16:03
+-- Généré le :  lun. 19 mars 2018 à 16:23
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -37,14 +37,14 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `comment_date` datetime NOT NULL,
   `report_comment` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `comments`
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`, `report_comment`) VALUES
-(1, 1, 'Max', 'Ton site c\'est trop de la bombe!!!', '2018-03-13 16:15:05', 0),
+(1, 1, 'Tom', 'Tom', '2018-03-19 17:22:12', 0),
 (5, 2, 'jimmy', 'Merci de te présenter', '2018-01-17 12:20:21', 0),
 (6, 2, 'francis', 'Oui au mon on sait a qui on a affaire.', '2018-01-17 12:20:51', 0),
 (7, 2, 'Emilie', 'Moi en tout cas, j\'aime pas les blogs,\r\nc\'est trop has been, limite année 90.', '2018-01-17 12:21:41', 0),
@@ -56,7 +56,8 @@ INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`, `r
 (14, 5, 'bill', 'cosby', '2018-02-11 17:32:02', 0),
 (18, 2, 'tim', 'tim', '2018-02-18 15:48:36', 0),
 (23, 6, 'test', 'test', '2018-03-07 15:12:55', 0),
-(24, 6, 'hello', 'hello', '2018-03-07 18:41:41', 0);
+(24, 6, 'hello', 'hello', '2018-03-07 18:41:41', 0),
+(31, 1, 'bill', 'bill', '2018-03-19 16:27:27', 0);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,14 @@ CREATE TABLE IF NOT EXISTS `members` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `members`
+--
+
+/*INSERT INTO `members` (`id`, `username`, `password`) VALUES*/
+
 
 -- --------------------------------------------------------
 
@@ -85,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `content` text NOT NULL,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `posts`
@@ -97,7 +105,8 @@ INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
 (4, 'Chapitre 4', 'Je teste le blog une fois', '2018-02-07 19:30:03'),
 (5, 'Chapitre 5', 'Toto était un enfant très malin, qui adorait faire des blagues à ses amis', '2018-02-07 19:31:57'),
 (6, 'Chapitre 1', 'un test', '2018-03-06 19:58:11'),
-(24, 'Chapitre 6', 'chapitre 6', '2018-03-07 10:58:11');
+(24, 'Chapitre 6', 'chapitre 6', '2018-03-07 10:58:11'),
+(26, 'test', 'test', '2018-03-19 17:21:42');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
