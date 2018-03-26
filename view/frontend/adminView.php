@@ -18,8 +18,13 @@
     $_SESSION['password'] = $_POST['password'];
         
         if(isset($_POST['case'])) {
+<<<<<<< HEAD
             setcookie('username', $_POST['username'], time() + 2*24*3600, null, null, false, true);
             setcookie('password', $_POST['password'], time() + 2*24*3600, null, null, false, true);
+=======
+            setcookie('username', $_POST['username'], time() + 3600, null, null, false, true);
+            setcookie('password', $_POST['password'], time() + 3600, null, null, false, true);
+>>>>>>> 42328a76a4b3c36519466b0995c5a721101ad921
             
         }
     
@@ -237,9 +242,15 @@
             
                     </h3>
     
+<<<<<<< HEAD
                     <p class="text-white text-center py-2">
         
                         <?php  echo '<div class="text-white text-center py-2" style="font-family: \'Lobster\',cursive;font-size: 25px;">' . $data['content'] . '</div>'  ?>
+=======
+                    <p class="text-white text-center py-2 border">
+        
+                        <?= nl2br(htmlspecialchars($data['content'])) ?>
+>>>>>>> 42328a76a4b3c36519466b0995c5a721101ad921
             
                     </p>
         
@@ -295,7 +306,11 @@
                         
                             <label for="content" class="text-white">Message :</label>
                             
+<<<<<<< HEAD
                             <textarea class="form-control border border-dark tinymce" id="content" name="content" rows="3"></textarea>
+=======
+                            <textarea class="form-control border border-dark" id="content" name="content" rows="3"></textarea>
+>>>>>>> 42328a76a4b3c36519466b0995c5a721101ad921
                             
                         </div>
   

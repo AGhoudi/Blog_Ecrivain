@@ -28,7 +28,11 @@
         elseif ($_GET['action'] == 'addPost') {
             
             if (!empty($_POST['title']) && !empty($_POST['content'])) {                    
+<<<<<<< HEAD
                 addPost(htmlspecialchars($_POST['title']), $_POST['content']);                    
+=======
+                addPost(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']));                    
+>>>>>>> 42328a76a4b3c36519466b0995c5a721101ad921
             }
             
             else {                    
@@ -60,7 +64,11 @@
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 
                 if (!empty($_POST['title']) && !empty($_POST['content'])) {                    
+<<<<<<< HEAD
                     updatePost($_GET['id'], htmlspecialchars($_POST['title']), $_POST['content']);                    
+=======
+                    updatePost($_GET['id'], htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']));                    
+>>>>>>> 42328a76a4b3c36519466b0995c5a721101ad921
                 }
                 
                 else {
@@ -190,7 +198,11 @@
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {                    
+<<<<<<< HEAD
                     updateComment($_GET['id'], htmlspecialchars($_POST['author']), $_POST['comment']);                    
+=======
+                    updateComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));                    
+>>>>>>> 42328a76a4b3c36519466b0995c5a721101ad921
                 }
                 
                 else {                    
