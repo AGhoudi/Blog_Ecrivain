@@ -17,7 +17,10 @@
             }
             
             else {                
-                throw new Exception('Aucun identifiant de billet envoyé');                
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de billet envoyé' . '</p>';
+                
             }
             
         }
@@ -25,11 +28,14 @@
         elseif ($_GET['action'] == 'addPost') {
             
             if (!empty($_POST['title']) && !empty($_POST['content'])) {                    
-                addPost(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']));                    
+                addPost(htmlspecialchars($_POST['title']), $_POST['content']);                    
             }
             
             else {                    
-                throw new Exception('Tous les champs ne sont pas remplis !');                
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Tous les champs ne sont pas remplis !' . '</p>';
+                
             }
             
         }
@@ -41,7 +47,10 @@
             }
             
             else {                
-                throw new Exception('Aucun identifiant de billet envoyé');
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de billet envoyé' . '</p>';
+                
             }
             
         }
@@ -51,17 +60,23 @@
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 
                 if (!empty($_POST['title']) && !empty($_POST['content'])) {                    
-                    updatePost($_GET['id'], htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']));                    
+                    updatePost($_GET['id'], htmlspecialchars($_POST['title']), $_POST['content']);                    
                 }
                 
-                else {                    
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                else {
+                    
+                    require('view/frontend/errorPageView.php');
+                    echo '<br><p class="text-center text-white my-5">' . 'Tous les champs ne sont pas remplis !' . '</p>';
+                    
                 }
                 
             }
             
             else {                
-                throw new Exception('Aucun identifiant de billet envoyé');
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de billet envoyé' . '</p>';
+                
             }
             
         }
@@ -73,7 +88,10 @@
             }
             
             else {                
-                throw new Exception('Aucun identifiant de billet envoyé');
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de billet envoyé' . '</p>';
+                
             }
             
         }
@@ -87,13 +105,19 @@
                 }
                 
                 else {                    
-                    throw new Exception('Tous les champs ne sont pas remplis !');                    
+                    
+                    require('view/frontend/errorPageView.php');
+                    echo '<br><p class="text-center text-white my-5">' . 'Tous les champs ne sont pas remplis !' . '</p>';
+                    
                 }
                 
             }
             
             else {                
-                throw new Exception('Aucun identifiant de billet envoyé');                
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de billet envoyé' . '</p>';
+                
             }
             
         }
@@ -105,7 +129,10 @@
             }
             
             else {
-                throw new Exception('Aucun identifiant de commentaire envoyé');                
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de commentaire envoyé' . '</p>';
+                
             }
                     
         }        
@@ -135,7 +162,10 @@
             }
             
             else {                
-                throw new Exception('Aucun identifiant de billet envoyé');
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de billet envoyé' . '</p>';
+                
             }
             
         }
@@ -147,7 +177,10 @@
             }
             
             else {                
-                throw new Exception('Aucun identifiant de commentaire envoyé');                
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de commentaire envoyé' . '</p>';
+                
             }
             
         }
@@ -157,17 +190,23 @@
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {                    
-                    updateComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));                    
+                    updateComment($_GET['id'], htmlspecialchars($_POST['author']), $_POST['comment']);                    
                 }
                 
                 else {                    
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                    
+                    require('view/frontend/errorPageView.php');
+                    echo '<br><p class="text-center text-white my-5">' . 'Tous les champs ne sont pas remplis !' . '</p>';
+                    
                 }
                 
             }
             
             else {                
-                throw new Exception('Aucun identifiant de billet envoyé');
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de commentaire envoyé' . '</p>';
+                
             }
             
         }
@@ -179,7 +218,10 @@
             }
             
             else {                
-                throw new Exception('Aucun identifiant de commentaire envoyé');
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de commentaire envoyé' . '</p>';
+                
             }
             
         }
@@ -191,7 +233,10 @@
             }
             
             else {                
-                throw new Exception('Aucun identifiant de commentaire envoyé');                
+                
+                require('view/frontend/errorPageView.php');
+                echo '<br><p class="text-center text-white my-5">' . 'Aucun identifiant de commentaire envoyé' . '</p>';
+                
             }
             
         }     
