@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 13 mars 2018 à 16:03
--- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Host: localhost:3306
+-- Generation Time: Mar 26, 2018 at 03:31 PM
+-- Server version: 5.6.34-log
+-- PHP Version: 7.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,32 +19,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `blog`
+-- Database: `blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comments`
+-- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `author` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `comment_date` datetime NOT NULL,
-  `report_comment` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+  `report_comment` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `comments`
+-- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`, `report_comment`) VALUES
-(1, 1, 'Max', 'Ton site c\'est trop de la bombe!!!', '2018-03-13 16:15:05', 0),
+(1, 1, 'Tom', 'Tom', '2018-03-19 17:22:12', 0),
 (5, 2, 'jimmy', 'Merci de te présenter', '2018-01-17 12:20:21', 0),
 (6, 2, 'francis', 'Oui au mon on sait a qui on a affaire.', '2018-01-17 12:20:51', 0),
 (7, 2, 'Emilie', 'Moi en tout cas, j\'aime pas les blogs,\r\nc\'est trop has been, limite année 90.', '2018-01-17 12:21:41', 0),
@@ -56,39 +54,43 @@ INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`, `r
 (14, 5, 'bill', 'cosby', '2018-02-11 17:32:02', 0),
 (18, 2, 'tim', 'tim', '2018-02-18 15:48:36', 0),
 (23, 6, 'test', 'test', '2018-03-07 15:12:55', 0),
-(24, 6, 'hello', 'hello', '2018-03-07 18:41:41', 0);
+(24, 6, 'hello', 'hello', '2018-03-07 18:41:41', 0),
+(31, 1, 'bill', 'bill', '2018-03-19 16:27:27', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `members`
+-- Table structure for table `members`
 --
 
-DROP TABLE IF EXISTS `members`;
-CREATE TABLE IF NOT EXISTS `members` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `members` (
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `password` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `username`, `password`) VALUES
+(1, 'Jean_Forteroche', '$2y$10$.Q9c2I5Q3YByW3/YNYjkLOFrxT2zXA2S0kLkMQTIyF/zMNpJ7VjTe');
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `posts`
+-- Table structure for table `posts`
 --
 
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE IF NOT EXISTS `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `creation_date` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+  `creation_date` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
@@ -97,8 +99,53 @@ INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
 (4, 'Chapitre 4', 'Je teste le blog une fois', '2018-02-07 19:30:03'),
 (5, 'Chapitre 5', 'Toto était un enfant très malin, qui adorait faire des blagues à ses amis', '2018-02-07 19:31:57'),
 (6, 'Chapitre 1', 'un test', '2018-03-06 19:58:11'),
-(24, 'Chapitre 6', 'chapitre 6', '2018-03-07 10:58:11');
-COMMIT;
+(24, 'Chapitre 6', 'chapitre 6', '2018-03-07 10:58:11'),
+(26, 'test', 'test', '2018-03-19 17:21:42'),
+(27, 'Test du post', '<p style=\"text-align: center;\"><em><strong>J\'aime trop ton blog.</strong></em></p>\r\n<p style=\"text-align: center;\"><em><strong>Bravo</strong></em></p>', '2018-03-21 16:10:52'),
+(28, 'Le chapitre', '<p style=\"text-align: center;\"><em><strong>Super Blog</strong></em></p>', '2018-03-22 15:28:48'),
+(32, 'Le test', '<p style=\"text-align: center;\"><em><strong>Ceci est un test</strong></em></p>\r\n<p style=\"text-align: center;\"><em><strong>un test je vous dis</strong></em></p>\r\n<p style=\"text-align: center;\"><em><strong>un vrai test.</strong></em></p>', '2018-03-22 15:54:24');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `members`
+--
+ALTER TABLE `members`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+--
+-- AUTO_INCREMENT for table `members`
+--
+ALTER TABLE `members`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
