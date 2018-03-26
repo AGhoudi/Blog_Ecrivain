@@ -36,12 +36,12 @@ function addPost($title, $content)
 {
     
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-
     $addedPost = $postManager->newPost($title, $content);
 
     if ($addedPost === false) {
         
-        throw new Exception('Impossible d\'ajouter le billet !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible d\'ajouter le billet !' . '</p>';
         
     }
     
@@ -75,7 +75,8 @@ function updatePost($postId, $title, $content)
 
     if ($modifiedPost === false) {
         
-        throw new Exception('Impossible de modifier le billet !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible de modifier le billet !' . '</p>';
         
     }
     
@@ -97,7 +98,8 @@ function delPost($postId)
 
     if ($suppressPost === false) {
         
-        throw new Exception('Impossible de supprimer le billet !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible de supprimer le billet !' . '</p>';
         
     }
     
@@ -119,7 +121,8 @@ function addComment($postId, $author, $comment)
 
     if ($affectedLines === false) {
         
-        throw new Exception('Impossible d\'ajouter le commentaire !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible d\'ajouter le commentaire !' . '</p>';
         
     }
     
@@ -146,7 +149,8 @@ function reportComment($commentId)
     
     if ($unsafeComment === false) {
         
-        throw new Exception('Impossible de signaler le commentaire !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible de signaler le commentaire !' . '</p>';
         
     }
     
@@ -161,19 +165,39 @@ function reportComment($commentId)
 function adminPannel()
     
 {
+    
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
     $listAll = $adminManager->adminSpace();
+    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
+    $connection = $adminManager->adminConnection();
 
     require('view/frontend/adminView.php');
+    
 }
 
 function adminConnect()
     
 {
+    
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
-    $connection = $adminManager->adminSpace();
+    $listAll = $adminManager->adminSpace();
 
     require('view/frontend/adminConnectView.php');
+    
+}
+
+function adminLogout()
+    
+{
+    
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+    setcookie('username', '');
+    setcookie('password', '');
+    
+    header ('location: index.php?action=adminConnect');
+    
 }
 
 function commentPannel()
@@ -181,10 +205,10 @@ function commentPannel()
 {
     
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-
     $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    
+    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
+    $comments = $adminManager->selectComments($_GET['id']);
 
     require('view/frontend/commentView.php');
     
@@ -205,13 +229,13 @@ function updateComment($commentId, $author, $comment)
     
 {
     
-   $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
-
+    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
     $modifiedComment = $adminManager->changedComment($commentId, $author, $comment);
 
     if ($modifiedComment === false) {
         
-        throw new Exception('Impossible de modifier le billet !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible de modifier le commentaire !' . '</p>';
         
     }
     
@@ -222,7 +246,7 @@ function updateComment($commentId, $author, $comment)
   
         $comment = $comments->fetch();
         
-        header('Location: index.php?action=changeComment&id=' . $comment['post_id']);        
+        header('Location: index.php?action=changeComment&id=' . $comment['id']);        
         
     }
     
@@ -233,13 +257,16 @@ function delComment($commentId)
 {
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
     $comments = $adminManager->searchComments($commentId);
+    
     $comment = $comments->fetch();
+    
     $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();    
     $suppressComment = $adminManager->deleteComment($commentId);
 
     if ($suppressComment === false) {
         
-        throw new Exception('Impossible de supprimer le commentaire !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible de supprimer le commentaire !' . '</p>';
         
     }
     
@@ -255,18 +282,18 @@ function unreportComment($commentId)
     
 {
 
-    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
-    
-    
+    $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();    
     $safeComment = $adminManager->uncheckComment($commentId);
 
     if ($safeComment === false) {
         
-        throw new Exception('Impossible de supprimer le commentaire !');
+        require('view/frontend/errorPageView.php');
+        echo '<br><p class="text-center text-white my-5">' . 'Impossible de désignaler le commentaire !' . '</p>';
         
     }
     
     else {
+        
         $adminManager = new \OpenClassrooms\Blog\Model\AdminManager();
         $comments = $adminManager->searchComments($commentId);    
   
