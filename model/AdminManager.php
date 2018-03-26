@@ -13,7 +13,7 @@
         {
             
             $db = $this->dbConnect();
-            $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date ASC LIMIT 0, 10');
+            $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date ASC LIMIT 0, 5');
 
             return $req;            
             
@@ -24,6 +24,10 @@
         {
             
             $db = $this->dbConnect();
+            $connect = $db->prepare('SELECT username, password FROM members');
+            $connect->execute(array('username', 'password'));
+            
+            return $connect; 
         
         }
         
@@ -69,6 +73,18 @@
             
             $db = $this->dbConnect();
             $comments = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, report_comment FROM comments WHERE id = ? ORDER BY comment_date DESC LIMIT 0, 5');
+            $comments->execute(array($commentId));            
+
+            return $comments;
+            
+        }
+        
+        public function selectComments($commentId)
+            
+        {
+            
+            $db = $this->dbConnect();
+            $comments = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, report_comment FROM comments WHERE post_id = ? ORDER BY report_comment DESC LIMIT 0, 5');
             $comments->execute(array($commentId));            
 
             return $comments;
