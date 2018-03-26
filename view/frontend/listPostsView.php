@@ -2,6 +2,8 @@
 
     <?php ob_start(); ?>
     
+    <?php session_start(); ?>
+    
     <!-- Menu de navigation -->
        
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mb-5">
@@ -212,7 +214,7 @@
         
                     <p  class="text-white text-center py-2 border">
            
-                        <?= nl2br(htmlspecialchars($data['content'])) ?>            
+                        <?= $data['content'] ?>            
             
                     </p>
                     
@@ -250,9 +252,7 @@
             
                 <h3 class="my-5 text-center">Administration du blog</h3>
                                        
-                    <a href="index.php?action=adminConnect" class="btn btn-light  mx-auto d-flex justify-content-center mb-3 font-weight-bold font-italic mb-5 " style="width: 300px;">Espace membre</a>                 
-                                        
-                    <a href="index.php?action=admin" class="btn btn-success  mx-auto d-flex justify-content-center mb-3 font-weight-bold font-italic mb-5 " style="width: 300px;">Connexion à l'espace d'administration</a>                
+                    <a href="index.php?action=adminConnect" class="btn btn-light  mx-auto d-flex justify-content-center mb-3 font-weight-bold font-italic mb-5 " style="width: 300px;">Espace Administration</a>                                
                 
             </div>
            

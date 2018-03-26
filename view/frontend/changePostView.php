@@ -48,9 +48,9 @@
             
                     </h3>
     
-                    <p class="text-white text-center py-2 border">
+                    <p class="text-white text-center py-2">
         
-                        <?= nl2br(htmlspecialchars($post['content'])) ?>
+                        <?php echo '<div class="text-white text-center py-2" style="font-family: \'Lobster\',cursive;font-size: 25px;">' . $post['content'] . '</div>' ?>
             
                     </p>
         
@@ -86,7 +86,7 @@
                         
                             <label for="title" class="text-white">Titre :</label>
                             
-                            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" id="title" name="title">
                             
                         </div>
                         
@@ -94,7 +94,7 @@
                         
                             <label for="content" class="text-white">Message :</label>
                             
-                            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                            <textarea class="form-control tinymce"  id="content" name="content"  rows="3"><?= $post['content'] ?></textarea>
                             
                         </div>
   

@@ -1,4 +1,4 @@
-<?php $title = htmlspecialchars($post['title']); ?>
+<?php $title = 'Billet simple pour L\'Alaska, le blog de Jean Forteroche';  ?>
 
     <?php ob_start(); ?>    
     
@@ -48,9 +48,9 @@
             
                     </h3>
     
-                    <p class="text-white text-center py-2 border">
+                    <p class="text-white text-center py-2">
         
-                        <?= nl2br(htmlspecialchars($post['content'])) ?>
+                        <?= $post['content'] ?>
             
                     </p>
         
@@ -91,7 +91,11 @@
         
                     <h3 class="text-center text-white chapitre py-2"><?= htmlspecialchars($comment['author']) ?></h3>
             
-                    <p class="text-white text-center py-2 border"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                    <p class="text-white text-center py-2">                      
+                    
+                    <?php echo '<div class="text-white text-center py-2" style="font-family: \'Lobster\',cursive;font-size: 25px;">' . $comment['comment'] . '</div>' ?>
+                    
+                    </p>
             
                     <p class="text-white text-center py-2"><em>le <?= $comment['comment_date_fr'] ?></em></p>
                     

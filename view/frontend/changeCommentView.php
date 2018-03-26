@@ -1,6 +1,15 @@
 <?php $title = 'Billet simple pour L\'Alaska, le blog de Jean Forteroche'; ?>
 
-    <?php ob_start(); ?>    
+    <?php ob_start(); ?>
+    
+        
+    <?php
+    
+        while ($comment = $comments->fetch())
+            
+        {
+            
+    ?>    
     
     <!-- Menu de navigation -->
        
@@ -20,7 +29,7 @@
         
                 <div class="navbar-nav">
         
-                    <a class="nav-item nav-link text-white" href="index.php?action=admin">Retour à l'espace d'administration</a>                
+                    <a class="nav-item nav-link text-white" href="index.php?action=commentPannel&amp;id=<?= $comment['post_id'] ?>">Retour aux commentaires</a>                
                 
                 </div>
             
@@ -31,14 +40,6 @@
     </nav>
     
     <!-- Commentaire selectionné -->
-    
-        <?php
-    
-        while ($comment = $comments->fetch())
-            
-        {
-            
-        ?>
     
     <div class="container">
     
@@ -56,9 +57,9 @@
             
                     </h3>
     
-                    <p class="text-white text-center py-2 border">
+                    <p class="text-white text-center py-2">
         
-                        <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+                        <?php echo '<div class="text-white text-center py-2" style="font-family: \'Lobster\',cursive;font-size: 25px;">' . $comment['comment'] . '</div>' ?>
             
                     </p>
         
@@ -104,7 +105,7 @@
                         
                             <label for="comment" class="text-white">Commentaire :</label>
                             
-                            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                            <textarea class="form-control tinymce" id="comment" name="comment"  rows="3"><?= $comment['comment'] ?></textarea>
                             
                         </div>
   
