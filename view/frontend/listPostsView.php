@@ -212,9 +212,9 @@
             
                     </h3>
         
-                    <p  class="text-white text-center py-2 border">
+                    <p  class="text-white text-center py-2">
            
-                        <?= $data['content'] ?>            
+                        <?php  echo '<div class="text-white text-center py-2" style="font-family: \'Lobster\',cursive;font-size: 25px;">' . $data['content'] . '</div>' ?>             
             
                     </p>
                     
