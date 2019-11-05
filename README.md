@@ -2,7 +2,7 @@
 
 ========
 
-https://www.ali-ghoudi.com/projet4/
+<a href="https://www.ali-ghoudi.com/projet4/" target="_blank">Project 4 Link</a>
 
 Conception of a blog for a writer in PHP
 
