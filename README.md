@@ -17,7 +17,7 @@ _____________
 Création d'un blog pour un écrivain en PHP
 
 Le Blog de Jean Forteroche.
-
+Dans le cadre de la formation développeur web junior, d'Openclassrooms, la consigne était de créer pour le projet 4, un blog en utilisant PHP, la POO, et l'architecture MVC
 Création d'un blog en PHP et MYSQL pour un écrivain
 utilisation du modèle MVC et de la POO pour la conception.
 Utilisation du framework Bootstrap et de Git.
@@ -27,14 +27,15 @@ Utilisation du framework Bootstrap et de Git.
 
 <div align=center><img src="https://user-images.githubusercontent.com/27373255/131214356-41e043b7-90d7-4e77-a6a4-314e67b1d2d2.png" alt="memory-game"/></div>
 <h2 align=center>🎯 Objectif du projet :</h2>
-<p align=center>Il s'agissait de créer un jeu de memory game, en utilisant le langage javascript.</p>
+<p align=center>Création d'un blog pour un écrivain, Jean Forteroche en utilisant PHP.</p>
 
 <h2 align=center>📝 Description :</h2>
 
-<p align=center>Dans le cadre de ma recherche d'approfondissement, de mes connaissances en javascript:</br>
-J'ai crée un jeu de memory game en HTML, CSS et JAVASCRIPT.</br>
-Le principe du jeu est simple, lors d'un clic on retourne une carte, l'objectif du jeu est de retourner une paire de carte identique.</br>
-Il y a un nombre de paires de cartes, une fois qu'on les à toutes trouvées, le jeu est fini.</p>
+<p align=center>Dans le cadre de la formation développeur web junior, d'Openclassrooms, la consigne était de créer pour le projet 4,</br>
+un blog en utilisant PHP, la POO, et l'architecture MVC
+J'ai crée un site à l'aide de ce langage afin de répondre à la demande.</br>
+Cela a aussi été l'occasion d'utiliser Bootstrap, le versionnage de Git, mais aussi de renforcer mes compétences</br>
+en conception de site web.</p>
 
 <h2 align=center>👁️ Visuel :</h2>
 <div align=center><img src="https://i.postimg.cc/XvK18NBm/memory.jpg" alt="visuel du jeu"</div>
