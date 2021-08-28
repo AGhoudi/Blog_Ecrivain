@@ -11,7 +11,7 @@ Cela a aussi été l'occasion d'utiliser Bootstrap, le versionnage de Git, mais 
 en conception de site web.</p>
 
 <h2 align=center>👁️ Visuel :</h2>
-<div align=center><img src="https://i.postimg.cc/XvK18NBm/memory.jpg" alt="visuel du jeu"</div>
+<div align=center><img src="https://user-images.githubusercontent.com/27373255/131215250-3abf76c2-53e0-4349-aa13-53c7f862d865.png" alt="visuel du jeu"</div>
 
 <h2 align=center>💻 Stack utilisé :</h2>
 
